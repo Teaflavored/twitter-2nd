@@ -25,6 +25,8 @@ class TwitterClient: BDBOAuth1SessionManager {
     // Tweet related
     static let homeTimelineUrl: String = "1.1/statuses/home_timeline.json"
     static let postStatusUrl: String = "1.1/statuses/update.json"
+    static let baseRetweetUrl: String = "1.1/statuses/retweet/"
+    static let favoriteUrl: String = "1.1/favorites/create.json"
 
     var loginSuccess: (() -> ())?
     var loginFailure: ((Error) -> ())?
@@ -166,8 +168,46 @@ class TwitterClient: BDBOAuth1SessionManager {
             },
             failure: {
                 (task: URLSessionDataTask?, error: Error) in
+                print("error: \(error.localizedDescription)")
                 failure(error)
             }
         )
     }
+
+    func retweet(_ tweet: Tweet, success: @escaping () -> (), failure: @escaping (Error) -> ()) {
+        post(
+            "\(TwitterClient.baseRetweetUrl)/\(tweet.id!).json",
+            parameters: nil,
+            progress: nil,
+            success: {
+                (task: URLSessionDataTask?, response: Any?) in
+                print("successful retweet")
+                success()
+            },
+            failure: {
+                (task: URLSessionDataTask?, error: Error) in
+                print("error: \(error.localizedDescription)")
+                failure(error)
+            }
+        )
+    }
+
+    func like(_ tweet: Tweet, success: @escaping () -> (), failure: @escaping (Error) -> ()) {
+        post(
+            "\(TwitterClient.favoriteUrl)?id=\(tweet.id!)",
+            parameters: nil,
+            progress: nil,
+            success: {
+                (task: URLSessionDataTask?, response: Any?) in
+                print("successful like")
+                success()
+        },
+            failure: {
+                (task: URLSessionDataTask?, error: Error) in
+                print("error: \(error.localizedDescription)")
+                failure(error)
+        }
+        )
+    }
+
 }

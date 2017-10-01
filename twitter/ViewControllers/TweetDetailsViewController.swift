@@ -18,6 +18,8 @@ class TweetDetailsViewController: UIViewController {
     @IBOutlet weak var userHandleLabel: UILabel!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userProfileImageView: UIImageView!
+    @IBOutlet weak var numberRetweetsLabel: UILabel!
+    @IBOutlet weak var numberFavoritesLabel: UILabel!
     var tweet: Tweet!
 
     override func viewDidLoad() {
@@ -44,6 +46,9 @@ class TweetDetailsViewController: UIViewController {
         if let fullTimeString = tweet.fullTimeString {
             tweetTimestampLabel.text = fullTimeString
         }
+    
+        numberRetweetsLabel.text = "\(tweet.numberOfRetweets) retweets"
+        numberFavoritesLabel.text = "\(tweet.numberOfFavorites) favorites"
 
         // set up controls
         let retweetGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(onRetweet))
@@ -65,7 +70,13 @@ class TweetDetailsViewController: UIViewController {
     }
     
     @objc fileprivate func onRetweet() {
-        print("onTweet")
+        TwitterClient.instance.retweet(
+            tweet,
+            success: {},
+            failure: {
+                (error: Error) -> () in
+            }
+        )
     }
 
     @objc fileprivate func onReply() {
@@ -73,7 +84,13 @@ class TweetDetailsViewController: UIViewController {
     }
 
     @objc fileprivate func onLike() {
-        print("onLike")
+        TwitterClient.instance.like(
+            tweet,
+            success: {},
+            failure: {
+                (error: Error) -> () in
+        }
+        )
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

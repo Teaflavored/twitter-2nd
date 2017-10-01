@@ -74,6 +74,10 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
         cell.setSelected(false, animated: true)
     }
 
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+
     @objc fileprivate func refreshControlAction(_ refreshControl: UIRefreshControl) {
         fetchTimeline()
     }
