@@ -80,7 +80,7 @@ class TweetDetailsViewController: UIViewController {
     }
 
     @objc fileprivate func onReply() {
-        print("onReply")
+        performSegue(withIdentifier: "replySegue", sender: nil)
     }
 
     @objc fileprivate func onLike() {
