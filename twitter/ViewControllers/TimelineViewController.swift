@@ -11,7 +11,9 @@ import UIKit
 class TimelineViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tweetsTableView: UITableView!
+
     var tweets: [Tweet] = []
+    var refreshControl: UIRefreshControl!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,16 +22,13 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
         tweetsTableView.estimatedRowHeight = 100
         tweetsTableView.rowHeight = UITableViewAutomaticDimension
 
-        TwitterClient.instance.fetchHomeTimeline(
-            success: {
-                (tweets: [Tweet]) -> () in
-                self.tweets = tweets
-                self.tweetsTableView.reloadData()
-            },
-            failure: {
-                (error: Error) in
-            }
-        )
+        // Set up pull to refresh
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControlEvents.valueChanged)
+        
+        tweetsTableView.insertSubview(refreshControl, at: 0)
+        
+        fetchTimeline()
         // Do any additional setup after loading the view.
     }
 
@@ -57,6 +56,25 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
         cell.updateWithTweet(tweet)
 
         return cell
+    }
+
+    @objc fileprivate func refreshControlAction(_ refreshControl: UIRefreshControl) {
+        fetchTimeline()
+    }
+
+    fileprivate func fetchTimeline() -> () {
+        TwitterClient.instance.fetchHomeTimeline(
+            success: {
+                (tweets: [Tweet]) -> () in
+                self.tweets = tweets
+                self.tweetsTableView.reloadData()
+                self.refreshControl.endRefreshing()
+            },
+                failure: {
+                    (error: Error) in
+                self.refreshControl.endRefreshing()
+            }
+        )
     }
     
     /*
