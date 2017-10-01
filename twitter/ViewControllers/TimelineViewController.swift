@@ -68,6 +68,12 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
         return cell
     }
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tweetsTableView.cellForRow(at: indexPath) as! TweetCell
+        
+        cell.setSelected(false, animated: true)
+    }
+
     @objc fileprivate func refreshControlAction(_ refreshControl: UIRefreshControl) {
         fetchTimeline()
     }
