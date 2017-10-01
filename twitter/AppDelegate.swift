@@ -44,17 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         print(url)
-        let requestToken = BDBOAuth1Credential(queryString: url.query)
-        TwitterClient.instance.checkSession(
-            requestToken: requestToken!,
-            success: {
-                TwitterClient.instance.fetchCurrentUser()
-                TwitterClient.instance.fetchHomeTimeline()
-            },
-            error: {
-                (error: Error?) in
-            }
-        )
+        TwitterClient.instance.handleOpenUrl(url)
 
         return true
     }

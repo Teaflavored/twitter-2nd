@@ -28,9 +28,12 @@ class LoginViewController: UIViewController {
 
     @IBAction func onLogin(_ sender: Any) {
         TwitterClient.instance.login(
-            success: {},
-            error: {
-                (error: Error?) -> Void in
+            success: {
+                () -> () in
+                print("logged in")
+            },
+            failure: {
+                (error: Error) -> Void in
             }
         )
     }

@@ -24,9 +24,15 @@ class TwitterClient: BDBOAuth1SessionManager {
     // Tweet related
     static let homeTimelineUrl: String = "1.1/statuses/home_timeline.json"
 
+    var loginSuccess: (() -> ())?
+    var loginFailure: ((Error) -> ())?
+
     static let instance = TwitterClient(baseURL: URL(string: TwitterClient.baseUrl), consumerKey: TwitterClient.consumerKey, consumerSecret: TwitterClient.consumerSecret)!
 
-    func login(success: @escaping () -> Void, error: @escaping (Error?) -> Void) {
+    func login(success: @escaping () -> (), failure: @escaping (Error) -> ()) {
+        loginSuccess = success
+        loginFailure = failure
+
         deauthorize()
         fetchRequestToken(
             withPath: TwitterClient.oauthRequestTokenPath,
@@ -42,6 +48,7 @@ class TwitterClient: BDBOAuth1SessionManager {
             failure: {
                 (error: Error?) in
                 print("error \(error!.localizedDescription)")
+                self.loginFailure?(error!)
             }
         )
     }
@@ -50,7 +57,22 @@ class TwitterClient: BDBOAuth1SessionManager {
         
     }
 
-    func checkSession(requestToken: BDBOAuth1Credential, success: @escaping () -> Void, error: @escaping (Error?) -> Void) {
+    func handleOpenUrl(_ url: URL) {
+        let requestToken = BDBOAuth1Credential(queryString: url.query)
+        
+        checkSession(
+            requestToken: requestToken!,
+            success: {
+                self.loginSuccess?()
+            },
+            failure: {
+                (error: Error) in
+                self.loginFailure?(error)
+            }
+        )
+    }
+
+    func checkSession(requestToken: BDBOAuth1Credential, success: @escaping () -> (), failure: @escaping (Error) -> ()) {
         fetchAccessToken(
             withPath: TwitterClient.accessPath,
             method: "POST",
@@ -61,52 +83,45 @@ class TwitterClient: BDBOAuth1SessionManager {
                 success()
             },
             failure: {
-                (err: Error?) in
-                print("error \(err!.localizedDescription)")
-                error(err)
+                (error: Error?) in
+                print("error \(error!.localizedDescription)")
+                failure(error!)
             }
         )
     }
     
-    func fetchCurrentUser() {
-        self.get(
+    func fetchCurrentUser(success: @escaping (User) -> (), failure: @escaping (Error) -> ()) {
+        get(
             TwitterClient.verifyAccountUrl,
             parameters: nil,
             progress: nil,
             success: {
                 (task: URLSessionDataTask, response: Any?) in
                 let user = User(dictionary: response as! NSDictionary)
-                print(user.name)
-                print(user.screename)
-                print(user.profileUrl)
-                print(user.tagLine)
+                success(user)
             },
             failure: {
-                (task: URLSessionDataTask?, error: Error) in
-                print("error: \(error.localizedDescription)")
+                (task: URLSessionDataTask?, error: Error?) in
+                print("error: \(error!.localizedDescription)")
+                failure(error!)
             }
         )
     }
 
-    func fetchHomeTimeline() {
-        self.get(
+    func fetchHomeTimeline(success: @escaping ([Tweet]) -> (), failure: @escaping (Error) -> ()) {
+        get(
             TwitterClient.homeTimelineUrl,
             parameters: nil,
             progress: nil,
             success: {
                 (task: URLSessionDataTask, response: Any?) in
                 let tweets = Tweet.tweetsWithArray(dictionaries: response as! [NSDictionary])
-                
-                for tweet in tweets {
-                    print(tweet.text)
-                    print(tweet.timestamp)
-                    print(tweet.numberOfRetweets)
-                    print(tweet.numberOfFavorites)
-                }
+                success(tweets)
             },
             failure: {
-                (task: URLSessionDataTask?, error: Error) in
-                print("error: \(error.localizedDescription)")
+                (task: URLSessionDataTask?, error: Error?) in
+                print("error: \(error!.localizedDescription)")
+                failure(error!)
             }
         )
     }
