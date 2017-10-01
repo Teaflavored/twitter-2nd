@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import BDBOAuth1Manager
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -39,6 +40,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        print(url)
+        let requestToken = BDBOAuth1Credential(queryString: url.query)
+        TwitterClient.instance.checkSession(
+            requestToken: requestToken!,
+            success: {
+                TwitterClient.instance.fetchCurrentUser()
+                TwitterClient.instance.fetchHomeTimeline()
+            },
+            error: {
+                (error: Error?) in
+            }
+        )
+
+        return true
     }
 }
 
