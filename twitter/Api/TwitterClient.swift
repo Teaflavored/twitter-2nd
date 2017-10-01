@@ -41,7 +41,7 @@ class TwitterClient: BDBOAuth1SessionManager {
             },
             failure: {
                 (error: Error?) in
-                    print("error \(error!.localizedDescription)")
+                print("error \(error!.localizedDescription)")
             }
         )
     }
@@ -57,13 +57,13 @@ class TwitterClient: BDBOAuth1SessionManager {
             requestToken: requestToken,
             success: {
                 (accessToken: BDBOAuth1Credential?) in
-                    print("I got the access token")
-                    success()
+                print("I got the access token")
+                success()
             },
             failure: {
                 (err: Error?) in
-                    print("error \(err!.localizedDescription)")
-                    error(err)
+                print("error \(err!.localizedDescription)")
+                error(err)
             }
         )
     }
@@ -75,11 +75,15 @@ class TwitterClient: BDBOAuth1SessionManager {
             progress: nil,
             success: {
                 (task: URLSessionDataTask, response: Any?) in
-                    print("account: \(response)")
+                let user = User(dictionary: response as! NSDictionary)
+                print(user.name)
+                print(user.screename)
+                print(user.profileUrl)
+                print(user.tagLine)
             },
             failure: {
                 (task: URLSessionDataTask?, error: Error) in
-                    print("error: \(error.localizedDescription)")
+                print("error: \(error.localizedDescription)")
             }
         )
     }
@@ -91,15 +95,18 @@ class TwitterClient: BDBOAuth1SessionManager {
             progress: nil,
             success: {
                 (task: URLSessionDataTask, response: Any?) in
-                    let tweets = response as! [NSDictionary]
+                let tweets = Tweet.tweetsWithArray(dictionaries: response as! [NSDictionary])
                 
                 for tweet in tweets {
-                    print("\(tweet["text"])")
+                    print(tweet.text)
+                    print(tweet.timestamp)
+                    print(tweet.numberOfRetweets)
+                    print(tweet.numberOfFavorites)
                 }
             },
             failure: {
                 (task: URLSessionDataTask?, error: Error) in
-                    print("error: \(error.localizedDescription)")
+                print("error: \(error.localizedDescription)")
             }
         )
     }
