@@ -49,7 +49,7 @@ class Tweet: NSObject {
     init(dictionary: NSDictionary) {
         text = dictionary["text"] as? String
         inReplyToScreenName = dictionary["in_reply_to_screen_name"] as? String
-        print(inReplyToScreenName)
+
         numberOfRetweets = (dictionary["retweet_count"] as? Int) ?? 0
         numberOfFavorites = (dictionary["favorite_count"] as? Int) ?? 0
         id = (dictionary["id"] as? Int64) ?? -1

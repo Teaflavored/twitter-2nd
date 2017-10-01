@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "twitter/Views/TweetCell.swift"
-            timestampString = "528553498.196119"
+            timestampString = "528558397.713099"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
             landmarkName = "updateWithTweet(_:)"
             landmarkType = "7">
          </BreakpointContent>

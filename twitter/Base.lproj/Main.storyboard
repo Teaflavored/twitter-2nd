@@ -76,24 +76,24 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tweet Body" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jRF-ph-Dlw">
-                                                    <rect key="frame" x="76" y="36.5" width="258" height="19.5"/>
+                                                    <rect key="frame" x="76" y="66.5" width="258" height="19.5"/>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M6M-df-4sh">
-                                                    <rect key="frame" x="131" y="8" width="132" height="21"/>
+                                                    <rect key="frame" x="131" y="38" width="132" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Timestamp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aEy-CP-Uo2">
-                                                    <rect key="frame" x="271" y="8" width="63" height="14.5"/>
+                                                    <rect key="frame" x="271" y="38" width="63" height="14.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hO6-n2-K6Z">
-                                                    <rect key="frame" x="76" y="8" width="258" height="30"/>
+                                                    <rect key="frame" x="76" y="0.0" width="258" height="30"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reply" translatesAutoresizingMaskIntoConstraints="NO" id="uvJ-F0-5Kj">
                                                             <rect key="frame" x="8" y="8" width="20" height="20"/>
@@ -120,7 +120,7 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7wR-dH-iDM">
-                                                    <rect key="frame" x="76" y="8" width="47" height="20.5"/>
+                                                    <rect key="frame" x="76" y="38" width="47" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -136,29 +136,22 @@
                                                 <constraint firstItem="jRF-ph-Dlw" firstAttribute="top" secondItem="7wR-dH-iDM" secondAttribute="bottom" constant="8" id="9qR-dX-hef"/>
                                                 <constraint firstItem="JTi-Pf-jFM" firstAttribute="top" secondItem="K09-VD-379" secondAttribute="top" constant="8" id="AA4-Uq-HGo"/>
                                                 <constraint firstAttribute="trailing" secondItem="jRF-ph-Dlw" secondAttribute="trailing" constant="8" id="AJo-5B-JTQ"/>
-                                                <constraint firstItem="7wR-dH-iDM" firstAttribute="top" secondItem="K09-VD-379" secondAttribute="top" constant="8" id="Eup-xy-TAV"/>
                                                 <constraint firstItem="M6M-df-4sh" firstAttribute="top" secondItem="7wR-dH-iDM" secondAttribute="top" id="Jpp-1F-urD"/>
                                                 <constraint firstAttribute="trailing" secondItem="aEy-CP-Uo2" secondAttribute="trailing" constant="8" id="Mux-2j-HdL"/>
                                                 <constraint firstItem="aEy-CP-Uo2" firstAttribute="leading" secondItem="M6M-df-4sh" secondAttribute="trailing" constant="8" id="RUa-q8-fY1"/>
-                                                <constraint firstItem="hO6-n2-K6Z" firstAttribute="top" secondItem="K09-VD-379" secondAttribute="top" constant="8" id="YRi-HZ-Aht"/>
+                                                <constraint firstItem="hO6-n2-K6Z" firstAttribute="top" secondItem="K09-VD-379" secondAttribute="top" id="YRi-HZ-Aht"/>
                                                 <constraint firstItem="jRF-ph-Dlw" firstAttribute="leading" secondItem="JTi-Pf-jFM" secondAttribute="trailing" constant="8" id="ibK-Vk-LBv"/>
                                                 <constraint firstItem="hO6-n2-K6Z" firstAttribute="leading" secondItem="JTi-Pf-jFM" secondAttribute="trailing" constant="8" id="kd3-IJ-oIW"/>
                                                 <constraint firstItem="M6M-df-4sh" firstAttribute="leading" secondItem="7wR-dH-iDM" secondAttribute="trailing" constant="8" id="oVJ-RM-FaN"/>
                                                 <constraint firstItem="aEy-CP-Uo2" firstAttribute="top" secondItem="7wR-dH-iDM" secondAttribute="top" id="wId-BZ-fCb"/>
-                                                <constraint firstItem="7wR-dH-iDM" firstAttribute="top" secondItem="hO6-n2-K6Z" secondAttribute="bottom" constant="8" id="yUH-IY-9vh"/>
+                                                <constraint firstItem="7wR-dH-iDM" firstAttribute="top" secondItem="hO6-n2-K6Z" secondAttribute="bottom" priority="501" constant="8" id="yUH-IY-9vh"/>
                                             </constraints>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="yUH-IY-9vh"/>
-                                                </mask>
-                                            </variation>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="inReplyToLabel" destination="xm3-t3-cOJ" id="tzs-Om-Xwk"/>
                                             <outlet property="inReplyToView" destination="hO6-n2-K6Z" id="frs-O9-dUV"/>
                                             <outlet property="nameLabel" destination="7wR-dH-iDM" id="TJg-iq-DSX"/>
-                                            <outlet property="nameToReplyToViewConstraint" destination="yUH-IY-9vh" id="VF2-jc-l4x"/>
-                                            <outlet property="nameToTopSuperviewConstraint" destination="Eup-xy-TAV" id="bMb-2G-5PQ"/>
+                                            <outlet property="replyHeightConstraint" destination="jTM-ou-ByB" id="D3S-w9-zxV"/>
                                             <outlet property="timestampLabel" destination="aEy-CP-Uo2" id="P4p-og-X00"/>
                                             <outlet property="tweetTextLabel" destination="jRF-ph-Dlw" id="ECH-cC-MD1"/>
                                             <outlet property="userNameLabel" destination="M6M-df-4sh" id="Z0H-yX-NXX"/>

@@ -18,15 +18,13 @@ class TweetCell: UITableViewCell {
     @IBOutlet weak var inReplyToView: UIView!
     @IBOutlet weak var inReplyToLabel: UILabel!
     
-    @IBOutlet weak var nameToTopSuperviewConstraint: NSLayoutConstraint!
-    @IBOutlet weak var nameToReplyToViewConstraint: NSLayoutConstraint!
+    @IBOutlet weak var replyHeightConstraint: NSLayoutConstraint!
+    
+    var heightConstraint: NSLayoutConstraint!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-       
-        inReplyToView.isHidden = true
-        nameToReplyToViewConstraint.isActive = false
-        nameToTopSuperviewConstraint.isActive = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -59,14 +57,12 @@ class TweetCell: UITableViewCell {
         }
 
         if let fullInReplyToString = tweet.fullInReplyToString {
+            replyHeightConstraint.constant = 30.0
             inReplyToView.isHidden = false
-            nameToTopSuperviewConstraint.isActive = false
-            nameToReplyToViewConstraint.isActive = true
-                inReplyToLabel.text = fullInReplyToString
+            inReplyToLabel.text = fullInReplyToString
         } else {
+            replyHeightConstraint.constant = 0.0
             inReplyToView.isHidden = true
-            nameToReplyToViewConstraint.isActive = false
-            nameToTopSuperviewConstraint.isActive = true
         }
     }
 }
