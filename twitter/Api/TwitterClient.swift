@@ -54,7 +54,9 @@ class TwitterClient: BDBOAuth1SessionManager {
     }
 
     func logout() {
-        
+        User.currentUser = nil
+        deauthorize()
+        NotificationCenter.default.post(name: User.userDidLogoutNotificationName, object: nil)
     }
 
     func handleOpenUrl(_ url: URL) {
@@ -63,7 +65,17 @@ class TwitterClient: BDBOAuth1SessionManager {
         checkSession(
             requestToken: requestToken!,
             success: {
-                self.loginSuccess?()
+                self.fetchCurrentUser(
+                    success: {
+                        (user: User) -> () in
+                        User.currentUser = user
+                        self.loginSuccess?()
+                    },
+                    failure: {
+                        (error: Error) in
+                        self.loginFailure?(error)
+                    }
+                )
             },
             failure: {
                 (error: Error) in
