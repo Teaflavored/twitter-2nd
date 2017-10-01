@@ -45,6 +45,15 @@ class User: NSObject {
     var profileUrl: URL?
     var tagLine: String?
     var dictionary: NSDictionary?
+    var twitterHandle: String? {
+        get {
+            if let screename = screename {
+                return "@\(screename)"
+            }
+            
+            return nil
+        }
+    }
 
     init(dictionary: NSDictionary) {
         self.dictionary = dictionary

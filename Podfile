@@ -6,6 +6,7 @@ target 'twitter' do
   use_frameworks!
   pod "AFNetworking"
   pod "BDBOAuth1Manager"
+  pod 'DateToolsSwift'
 
   # Pods for twitter
 

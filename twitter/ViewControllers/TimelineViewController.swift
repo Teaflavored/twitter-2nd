@@ -8,21 +8,23 @@
 
 import UIKit
 
-class TimelineViewController: UIViewController {
+class TimelineViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var tweetsTableView: UITableView!
     var tweets: [Tweet] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Set up dynamic row height for table view
+        tweetsTableView.estimatedRowHeight = 100
+        tweetsTableView.rowHeight = UITableViewAutomaticDimension
 
         TwitterClient.instance.fetchHomeTimeline(
             success: {
                 (tweets: [Tweet]) -> () in
                 self.tweets = tweets
-                
-                for tweet in tweets {
-                    print(tweet.text)
-                }
+                self.tweetsTableView.reloadData()
             },
             failure: {
                 (error: Error) in
@@ -40,6 +42,21 @@ class TimelineViewController: UIViewController {
         
         TwitterClient.instance.logout()
 
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return tweets.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tweetsTableView.dequeueReusableCell(withIdentifier: "tweetCell") as? TweetCell else {
+            return TweetCell()
+        }
+
+        let tweet = tweets[indexPath.row]
+        cell.updateWithTweet(tweet)
+
+        return cell
     }
     
     /*
