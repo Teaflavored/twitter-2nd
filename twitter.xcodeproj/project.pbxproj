@@ -10,6 +10,7 @@
 		093B5A521F808E3400D44E55 /* TwitterClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093B5A511F808E3400D44E55 /* TwitterClient.swift */; };
 		093B5A571F80C1B800D44E55 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093B5A561F80C1B800D44E55 /* User.swift */; };
 		093B5A591F80C1C100D44E55 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093B5A581F80C1C100D44E55 /* Tweet.swift */; };
+		09530AAD1F80CE0E00752585 /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09530AAC1F80CE0E00752585 /* TimelineViewController.swift */; };
 		09F01C211F808BE5008F8DF1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F01C201F808BE5008F8DF1 /* AppDelegate.swift */; };
 		09F01C231F808BE5008F8DF1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F01C221F808BE5008F8DF1 /* LoginViewController.swift */; };
 		09F01C261F808BE5008F8DF1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09F01C241F808BE5008F8DF1 /* Main.storyboard */; };
@@ -43,6 +44,7 @@
 		093B5A511F808E3400D44E55 /* TwitterClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterClient.swift; sourceTree = "<group>"; };
 		093B5A561F80C1B800D44E55 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		093B5A581F80C1C100D44E55 /* Tweet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
+		09530AAC1F80CE0E00752585 /* TimelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
 		09F01C1D1F808BE5008F8DF1 /* twitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = twitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09F01C201F808BE5008F8DF1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		09F01C221F808BE5008F8DF1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +114,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		09530AAB1F80CE0100752585 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				09530AAC1F80CE0E00752585 /* TimelineViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		09F01C141F808BE5008F8DF1 = {
 			isa = PBXGroup;
 			children = (
@@ -137,6 +147,7 @@
 		09F01C1F1F808BE5008F8DF1 /* twitter */ = {
 			isa = PBXGroup;
 			children = (
+				09530AAB1F80CE0100752585 /* ViewControllers */,
 				093B5A551F80C1A200D44E55 /* Models */,
 				093B5A501F808E1D00D44E55 /* Api */,
 				09F01C201F808BE5008F8DF1 /* AppDelegate.swift */,
@@ -490,6 +501,7 @@
 				09F01C231F808BE5008F8DF1 /* LoginViewController.swift in Sources */,
 				093B5A521F808E3400D44E55 /* TwitterClient.swift in Sources */,
 				09F01C211F808BE5008F8DF1 /* AppDelegate.swift in Sources */,
+				09530AAD1F80CE0E00752585 /* TimelineViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

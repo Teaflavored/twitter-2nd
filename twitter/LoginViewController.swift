@@ -31,6 +31,7 @@ class LoginViewController: UIViewController {
             success: {
                 () -> () in
                 print("logged in")
+                self.performSegue(withIdentifier: "loginSegue", sender: nil)
             },
             failure: {
                 (error: Error) -> Void in
