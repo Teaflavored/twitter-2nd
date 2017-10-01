@@ -14,20 +14,23 @@ PODS:
   - AFNetworking/Serialization (3.0.4)
   - AFNetworking/UIKit (3.0.4):
     - AFNetworking/NSURLSession
+  - Alamofire (4.5.1)
   - BDBOAuth1Manager (2.0.0):
     - AFNetworking/NSURLSession (~> 3.0.0)
   - DateToolsSwift (2.0.3)
 
 DEPENDENCIES:
   - AFNetworking
+  - Alamofire (~> 4.5)
   - BDBOAuth1Manager
   - DateToolsSwift
 
 SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
+  Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
   BDBOAuth1Manager: 92d17d06f8a648602962304cd2f35ae7394fa001
   DateToolsSwift: bf69bf9056d9e53c5c03f06e51f219b9b8b02f9e
 
-PODFILE CHECKSUM: bc38adbceecc1b22cbebce805340ac94c0cad4f2
+PODFILE CHECKSUM: 5fe8e61145ff0249183e97558dc957fce67d2e2c
 
 COCOAPODS: 1.3.1

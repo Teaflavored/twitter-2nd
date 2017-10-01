@@ -10,6 +10,7 @@ import Foundation
 import DateToolsSwift
 
 class Tweet: NSObject {
+    static let didPostTweetNotificationName: NSNotification.Name = NSNotification.Name(rawValue: "didPostTweet")
     var text: String?
     var timestamp: Date?
     var numberOfRetweets: Int = 0

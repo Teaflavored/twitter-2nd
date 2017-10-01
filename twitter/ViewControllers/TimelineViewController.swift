@@ -25,8 +25,18 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
         // Set up pull to refresh
         refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControlEvents.valueChanged)
-        
         tweetsTableView.insertSubview(refreshControl, at: 0)
+
+        // Set up listening to did post tweet
+        NotificationCenter.default.addObserver(
+            forName: Tweet.didPostTweetNotificationName,
+            object: nil,
+            queue: OperationQueue.main,
+            using: {
+                (NSNotification) in
+                self.fetchTimeline()
+            }
+        )
         
         fetchTimeline()
         // Do any additional setup after loading the view.

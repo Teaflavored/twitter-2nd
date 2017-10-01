@@ -7,6 +7,7 @@ target 'twitter' do
   pod "AFNetworking"
   pod "BDBOAuth1Manager"
   pod 'DateToolsSwift'
+  pod 'Alamofire', '~> 4.5'
 
   # Pods for twitter
 

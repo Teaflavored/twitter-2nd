@@ -8,6 +8,7 @@
 
 import Foundation
 import BDBOAuth1Manager
+import Alamofire
 
 class TwitterClient: BDBOAuth1SessionManager {
     // OAUTH related
@@ -23,6 +24,7 @@ class TwitterClient: BDBOAuth1SessionManager {
 
     // Tweet related
     static let homeTimelineUrl: String = "1.1/statuses/home_timeline.json"
+    static let postStatusUrl: String = "1.1/statuses/update.json"
 
     var loginSuccess: (() -> ())?
     var loginFailure: ((Error) -> ())?
@@ -134,6 +136,27 @@ class TwitterClient: BDBOAuth1SessionManager {
                 (task: URLSessionDataTask?, error: Error?) in
                 print("error: \(error!.localizedDescription)")
                 failure(error!)
+            }
+        )
+    }
+
+    func postStatus(_ status: String, success: @escaping () -> (), failure: @escaping (Error) -> ()) {
+        let encodedUrl = URLEncoding.default.queryComponents(fromKey: "status", value: status)
+        let (key, value) = encodedUrl[0]
+        let fullUrl = "\(TwitterClient.postStatusUrl)?\(key)=\(value)"
+
+        post(
+            fullUrl,
+            parameters: nil,
+            progress: nil,
+            success: {
+                (task: URLSessionDataTask?, response: Any?) in
+                NotificationCenter.default.post(name: Tweet.didPostTweetNotificationName, object: nil)
+                success()
+            },
+            failure: {
+                (task: URLSessionDataTask?, error: Error) in
+                failure(error)
             }
         )
     }
