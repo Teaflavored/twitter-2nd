@@ -140,11 +140,21 @@ class TwitterClient: BDBOAuth1SessionManager {
         )
     }
 
-    func postStatus(_ status: String, success: @escaping () -> (), failure: @escaping (Error) -> ()) {
-        let encodedUrl = URLEncoding.default.queryComponents(fromKey: "status", value: status)
-        let (key, value) = encodedUrl[0]
-        let fullUrl = "\(TwitterClient.postStatusUrl)?\(key)=\(value)"
+    func postStatus(_ status: String, replyTweet: Tweet?, success: @escaping () -> (), failure: @escaping (Error) -> ()) {
+        let encodedStatus = URLEncoding.default.queryComponents(fromKey: "status", value: status)
+        let (statusKey, statusValue) = encodedStatus[0]
+        var fullUrl: String!
 
+        if let tweet = replyTweet {
+            let encodedInReplyToStatus =
+                URLEncoding.default.queryComponents(fromKey: "in_reply_to_status_id", value: tweet.id)
+            let (replyKey, replyValue) = encodedInReplyToStatus[0]
+            fullUrl = "\(TwitterClient.postStatusUrl)?\(statusKey)=\(statusValue)&\(replyKey)=\(replyValue)"
+        } else {
+            fullUrl = "\(TwitterClient.postStatusUrl)?\(statusKey)=\(statusValue)"
+        }
+
+        print(fullUrl)
         post(
             fullUrl,
             parameters: nil,

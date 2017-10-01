@@ -11,6 +11,7 @@ import DateToolsSwift
 
 class Tweet: NSObject {
     static let didPostTweetNotificationName: NSNotification.Name = NSNotification.Name(rawValue: "didPostTweet")
+    var id: Int64!
     var text: String?
     var timestamp: Date?
     var numberOfRetweets: Int = 0
@@ -25,11 +26,33 @@ class Tweet: NSObject {
             return nil
         }
     }
+    var fullTimeString: String? {
+        get {
+            if let timestamp = timestamp {
+                return timestamp.format(with: "MMM d, h:mm a")
+            }
+            
+            return nil
+        }
+    }
+    var inReplyToScreenName: String?
+    var fullInReplyToString: String? {
+        get {
+            if let inReplyToScreenName = inReplyToScreenName {
+                return "In reply to @\(inReplyToScreenName)"
+            }
+
+            return nil
+        }
+    }
     
     init(dictionary: NSDictionary) {
         text = dictionary["text"] as? String
+        inReplyToScreenName = dictionary["in_reply_to_screen_name"] as? String
+        print(inReplyToScreenName)
         numberOfRetweets = (dictionary["retweet_count"] as? Int) ?? 0
         numberOfFavorites = (dictionary["favourites_count"] as? Int) ?? 0
+        id = (dictionary["id"] as? Int64) ?? -1
         let dateString = dictionary["created_at"] as? String
         let userData = dictionary["user"] as? NSDictionary
 

@@ -18,6 +18,7 @@ class NewTweetViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var viewToBottomConstraint: NSLayoutConstraint!
     
     let maxCharacters = 140
+    var replyTweet: Tweet?
     var status: String?
     var charactersRemainingString: String? {
         get {
@@ -32,8 +33,17 @@ class NewTweetViewController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateWithCurrentUserInfo()
+        if let replyTweet = replyTweet {
+            let user = replyTweet.user!
+            let handle = user.twitterHandle!
+            let initialText = "\(handle) - "
+            statusTextView.text = initialText
+            status = initialText
+        } else {
+            status = ""
+        }
+
         statusTextView.becomeFirstResponder()
-        status = ""
         charactersRemainingLabel.text = charactersRemainingString!
 
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChangeFrame(_:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
@@ -52,6 +62,7 @@ class NewTweetViewController: UIViewController, UITextViewDelegate {
     @IBAction func onPost(_ sender: Any) {
         TwitterClient.instance.postStatus(
             status!,
+            replyTweet: replyTweet,
             success: {
                 () -> () in
                 self.navigationController?.dismiss(animated: true, completion: nil)
