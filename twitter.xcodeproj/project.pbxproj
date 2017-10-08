@@ -13,6 +13,11 @@
 		09530AAD1F80CE0E00752585 /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09530AAC1F80CE0E00752585 /* TimelineViewController.swift */; };
 		09530AB01F80D6C400752585 /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09530AAF1F80D6C400752585 /* TweetCell.swift */; };
 		09530AB21F80E3AB00752585 /* NewTweetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09530AB11F80E3AB00752585 /* NewTweetViewController.swift */; };
+		095C95BC1F89D77100E4080C /* MentionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095C95BB1F89D77100E4080C /* MentionsViewController.swift */; };
+		095C95BE1F89D7A500E4080C /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095C95BD1F89D7A500E4080C /* MenuViewController.swift */; };
+		095C95C01F89D7E600E4080C /* HamburgerMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095C95BF1F89D7E600E4080C /* HamburgerMenuViewController.swift */; };
+		095C95C21F89FE6600E4080C /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095C95C11F89FE6600E4080C /* MenuCell.swift */; };
+		095C95C41F8A001D00E4080C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095C95C31F8A001D00E4080C /* ProfileViewController.swift */; };
 		097C5A5F1F80F59500113D53 /* TweetDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097C5A5E1F80F59500113D53 /* TweetDetailsViewController.swift */; };
 		09F01C211F808BE5008F8DF1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F01C201F808BE5008F8DF1 /* AppDelegate.swift */; };
 		09F01C231F808BE5008F8DF1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F01C221F808BE5008F8DF1 /* LoginViewController.swift */; };
@@ -50,6 +55,11 @@
 		09530AAC1F80CE0E00752585 /* TimelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
 		09530AAF1F80D6C400752585 /* TweetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetCell.swift; sourceTree = "<group>"; };
 		09530AB11F80E3AB00752585 /* NewTweetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTweetViewController.swift; sourceTree = "<group>"; };
+		095C95BB1F89D77100E4080C /* MentionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MentionsViewController.swift; sourceTree = "<group>"; };
+		095C95BD1F89D7A500E4080C /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		095C95BF1F89D7E600E4080C /* HamburgerMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HamburgerMenuViewController.swift; sourceTree = "<group>"; };
+		095C95C11F89FE6600E4080C /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
+		095C95C31F8A001D00E4080C /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		097C5A5E1F80F59500113D53 /* TweetDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetDetailsViewController.swift; sourceTree = "<group>"; };
 		09F01C1D1F808BE5008F8DF1 /* twitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = twitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09F01C201F808BE5008F8DF1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -126,6 +136,11 @@
 				09530AAC1F80CE0E00752585 /* TimelineViewController.swift */,
 				09530AB11F80E3AB00752585 /* NewTweetViewController.swift */,
 				097C5A5E1F80F59500113D53 /* TweetDetailsViewController.swift */,
+				09F01C221F808BE5008F8DF1 /* LoginViewController.swift */,
+				095C95BB1F89D77100E4080C /* MentionsViewController.swift */,
+				095C95BD1F89D7A500E4080C /* MenuViewController.swift */,
+				095C95BF1F89D7E600E4080C /* HamburgerMenuViewController.swift */,
+				095C95C31F8A001D00E4080C /* ProfileViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -134,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				09530AAF1F80D6C400752585 /* TweetCell.swift */,
+				095C95C11F89FE6600E4080C /* MenuCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -168,7 +184,6 @@
 				093B5A551F80C1A200D44E55 /* Models */,
 				093B5A501F808E1D00D44E55 /* Api */,
 				09F01C201F808BE5008F8DF1 /* AppDelegate.swift */,
-				09F01C221F808BE5008F8DF1 /* LoginViewController.swift */,
 				09F01C241F808BE5008F8DF1 /* Main.storyboard */,
 				09F01C271F808BE5008F8DF1 /* Assets.xcassets */,
 				09F01C291F808BE5008F8DF1 /* LaunchScreen.storyboard */,
@@ -517,11 +532,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				095C95C21F89FE6600E4080C /* MenuCell.swift in Sources */,
 				093B5A571F80C1B800D44E55 /* User.swift in Sources */,
 				09530AB21F80E3AB00752585 /* NewTweetViewController.swift in Sources */,
+				095C95C01F89D7E600E4080C /* HamburgerMenuViewController.swift in Sources */,
+				095C95C41F8A001D00E4080C /* ProfileViewController.swift in Sources */,
 				09530AB01F80D6C400752585 /* TweetCell.swift in Sources */,
+				095C95BC1F89D77100E4080C /* MentionsViewController.swift in Sources */,
 				093B5A591F80C1C100D44E55 /* Tweet.swift in Sources */,
 				097C5A5F1F80F59500113D53 /* TweetDetailsViewController.swift in Sources */,
+				095C95BE1F89D7A500E4080C /* MenuViewController.swift in Sources */,
 				09F01C231F808BE5008F8DF1 /* LoginViewController.swift in Sources */,
 				093B5A521F808E3400D44E55 /* TwitterClient.swift in Sources */,
 				09F01C211F808BE5008F8DF1 /* AppDelegate.swift in Sources */,
