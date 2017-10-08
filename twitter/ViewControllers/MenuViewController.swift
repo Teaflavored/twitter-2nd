@@ -28,9 +28,15 @@ UITableViewDelegate, UITableViewDataSource {
    
         let tvc = timelineViewController.viewControllers[0] as! TimelineViewController
         tvc.title = "Home"
+        
+        let mentionsViewController = storyboard.instantiateViewController(withIdentifier: "TimelineNavigationController") as! UINavigationController
+        let mvc = mentionsViewController.viewControllers[0] as! TimelineViewController
+        mvc.isMentionsView = true
+        mvc.title = "Mentions"
 
         menuViewControllers.append(profileViewController)
         menuViewControllers.append(timelineViewController)
+        menuViewControllers.append(mentionsViewController)
 
         hamburgerMenuViewController.contentViewController = timelineViewController
         // Do any additional setup after loading the view.

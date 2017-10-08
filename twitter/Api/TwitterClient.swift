@@ -23,6 +23,7 @@ class TwitterClient: BDBOAuth1SessionManager {
     static let verifyAccountUrl: String = "1.1/account/verify_credentials.json"
 
     // Tweet related
+    static let mentionsUrl: String = "1.1/statuses/mentions_timeline.json"
     static let homeTimelineUrl: String = "1.1/statuses/home_timeline.json"
     static let userTimelineUrl: String = "1.1/statuses/user_timeline.json"
     static let postStatusUrl: String = "1.1/statuses/update.json"
@@ -116,6 +117,24 @@ class TwitterClient: BDBOAuth1SessionManager {
                 (task: URLSessionDataTask, response: Any?) in
                 let user = User(dictionary: response as! NSDictionary)
                 success(user)
+            },
+            failure: {
+                (task: URLSessionDataTask?, error: Error?) in
+                print("error: \(error!.localizedDescription)")
+                failure(error!)
+            }
+        )
+    }
+    
+    func fetchMentions(success: @escaping ([Tweet]) -> (), failure: @escaping (Error) -> ()) {
+        get(
+            TwitterClient.mentionsUrl,
+            parameters: nil,
+            progress: nil,
+            success: {
+                (task: URLSessionDataTask, response: Any?) in
+                let tweets = Tweet.tweetsWithArray(dictionaries: response as! [NSDictionary])
+                success(tweets)
             },
             failure: {
                 (task: URLSessionDataTask?, error: Error?) in

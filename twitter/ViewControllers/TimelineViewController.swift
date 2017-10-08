@@ -22,6 +22,7 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
     var refreshControl: UIRefreshControl!
     var targetUser: User?
     var isProfileView: Bool = false
+    var isMentionsView: Bool = false
     var lastTappedViewController: UINavigationController!
 
     override func viewDidLoad() {
@@ -113,7 +114,20 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
     }
 
     fileprivate func fetchTimeline() -> () {
-        if (targetUser == nil) {
+        if isMentionsView {
+            TwitterClient.instance.fetchMentions(
+                success: {
+                    (tweets: [Tweet]) -> () in
+                    self.tweets = tweets
+                    self.tweetsTableView.reloadData()
+                    self.refreshControl.endRefreshing()
+            },
+                failure: {
+                    (error: Error) in
+                    self.refreshControl.endRefreshing()
+            }
+            )
+        } else if targetUser == nil {
             TwitterClient.instance.fetchHomeTimeline(
                 success: {
                     (tweets: [Tweet]) -> () in
