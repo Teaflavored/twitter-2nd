@@ -38,7 +38,17 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+### oauth flow
+<img src='https://i.imgur.com/mVdOR4v.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+### new post
+<img src='https://i.imgur.com/ItzOOC5.gif' title='Video Walkthrough 2' width='' alt='Video Walkthrough 2' />
+
+### favorites & retweets
+<img src='https://i.imgur.com/o5k6Jo2.gif' title='Video Walkthrough 3' width='' alt='Video Walkthrough 3' />
+
+### replies
+<img src='https://i.imgur.com/ZOYPm91.gif' title='Video Walkthrough 4' width='' alt='Video Walkthrough 4' />'
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
@@ -48,7 +58,7 @@ Describe any challenges encountered while building the app.
 
 ## License
 
-    Copyright [yyyy] [name of copyright owner]
+    Copyright [2017] [Auster Chen]
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
