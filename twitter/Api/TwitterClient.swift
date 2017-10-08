@@ -24,6 +24,7 @@ class TwitterClient: BDBOAuth1SessionManager {
 
     // Tweet related
     static let homeTimelineUrl: String = "1.1/statuses/home_timeline.json"
+    static let userTimelineUrl: String = "1.1/statuses/user_timeline.json"
     static let postStatusUrl: String = "1.1/statuses/update.json"
     static let baseRetweetUrl: String = "1.1/statuses/retweet/"
     static let favoriteUrl: String = "1.1/favorites/create.json"
@@ -127,6 +128,33 @@ class TwitterClient: BDBOAuth1SessionManager {
     func fetchHomeTimeline(success: @escaping ([Tweet]) -> (), failure: @escaping (Error) -> ()) {
         get(
             TwitterClient.homeTimelineUrl,
+            parameters: nil,
+            progress: nil,
+            success: {
+                (task: URLSessionDataTask, response: Any?) in
+                let tweets = Tweet.tweetsWithArray(dictionaries: response as! [NSDictionary])
+                success(tweets)
+            },
+            failure: {
+                (task: URLSessionDataTask?, error: Error?) in
+                print("error: \(error!.localizedDescription)")
+                failure(error!)
+            }
+        )
+    }
+
+    func fetchTimelineForUser(user: User, success: @escaping ([Tweet]) -> (), failure: @escaping (Error) -> ()) {
+        
+        let screenName = user.screename!
+        let encodedScreenName = URLEncoding.default.queryComponents(fromKey: "screen_name", value: screenName)
+        let encodedCount = URLEncoding.default.queryComponents(fromKey: "count", value: 20)
+        let (screenNameKey, screenNameValue) = encodedScreenName[0]
+        let (countKey, countValue) = encodedCount[0]
+        
+        let fullUrl = "\(TwitterClient.userTimelineUrl)?\(screenNameKey)=\(screenNameValue)&\(countKey)=\(countValue)"
+        print(fullUrl)
+        get(
+            fullUrl,
             parameters: nil,
             progress: nil,
             success: {

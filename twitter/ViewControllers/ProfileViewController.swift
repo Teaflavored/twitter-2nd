@@ -10,6 +10,9 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
+    @IBOutlet weak var timelineView: UIView!
+    var targetUser: User?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

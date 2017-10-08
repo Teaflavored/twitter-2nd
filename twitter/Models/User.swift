@@ -40,6 +40,10 @@ class User: NSObject {
         }
     }
 
+    var numTweets: Int64 = 0
+    var numFollowers: Int64 = 0
+    var numFollowing: Int64 = 0
+    var id: Int64 = 0
     var name: String?
     var screename: String?
     var profileUrl: URL?
@@ -54,9 +58,28 @@ class User: NSObject {
             return nil
         }
     }
+    var numTweetsString: String {
+        get {
+            return "\(numTweets) tweets"
+        }
+    }
+    var numFollowersString: String? {
+        get {
+            return "\(numFollowers) followers"
+        }
+    }
+    var numFollowingString: String? {
+        get {
+            return "following \(numFollowing)"
+        }
+    }
 
     init(dictionary: NSDictionary) {
         self.dictionary = dictionary
+        id = dictionary["id"] as! Int64
+        numTweets = dictionary["statuses_count"] as! Int64
+        numFollowers = dictionary["followers_count"] as! Int64
+        numFollowing = dictionary["friends_count"] as! Int64
         name = dictionary["name"] as? String
         screename = dictionary["screen_name"] as? String
         let profileUrlString = dictionary["profile_image_url_https"] as? String

@@ -11,9 +11,16 @@ import UIKit
 class TimelineViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tweetsTableView: UITableView!
-
+    @IBOutlet weak var userImageView: UIImageView!
+    @IBOutlet weak var numTweetsLabel: UILabel!
+    @IBOutlet weak var numFollowingLabel: UILabel!
+    @IBOutlet weak var numFollowerLabel: UILabel!
+    @IBOutlet weak var profileView: UIView!
+    
     var tweets: [Tweet] = []
     var refreshControl: UIRefreshControl!
+    var targetUser: User?
+    var isProfileView: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +28,27 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
         // Set up dynamic row height for table view
         tweetsTableView.estimatedRowHeight = 100
         tweetsTableView.rowHeight = UITableViewAutomaticDimension
+
+        if isProfileView {
+            tweetsTableView.tableHeaderView = profileView
+            var userToUse: User!
+            
+            if let user = targetUser {
+                userToUse = user
+            } else {
+                userToUse = User.currentUser!
+            }
+            
+            if let profileUrl = userToUse.profileUrl {
+                userImageView.setImageWith(profileUrl)
+            }
+            
+            numTweetsLabel.text = userToUse.numTweetsString
+            numFollowerLabel.text = userToUse.numFollowersString
+            numFollowingLabel.text = userToUse.numFollowingString
+        } else {
+            tweetsTableView.tableHeaderView = nil
+        }
 
         // Set up pull to refresh
         refreshControl = UIRefreshControl()
@@ -48,9 +76,7 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     @IBAction func onLogout(_ sender: Any) {
-        
         TwitterClient.instance.logout()
-
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -83,18 +109,34 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
     }
 
     fileprivate func fetchTimeline() -> () {
-        TwitterClient.instance.fetchHomeTimeline(
-            success: {
-                (tweets: [Tweet]) -> () in
-                self.tweets = tweets
-                self.tweetsTableView.reloadData()
-                self.refreshControl.endRefreshing()
+        if (targetUser == nil) {
+            TwitterClient.instance.fetchHomeTimeline(
+                success: {
+                    (tweets: [Tweet]) -> () in
+                    self.tweets = tweets
+                    self.tweetsTableView.reloadData()
+                    self.refreshControl.endRefreshing()
             },
                 failure: {
                     (error: Error) in
-                self.refreshControl.endRefreshing()
+                    self.refreshControl.endRefreshing()
             }
-        )
+            )
+        } else {
+            TwitterClient.instance.fetchTimelineForUser(
+                user: targetUser!,
+                success: {
+                    (tweets: [Tweet]) -> () in
+                    self.tweets = tweets
+                    self.tweetsTableView.reloadData()
+                    self.refreshControl.endRefreshing()
+            },
+                failure: {
+                    (error: Error) in
+                    self.refreshControl.endRefreshing()
+            }
+            )
+        }
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -106,8 +148,6 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
             let tweet = tweets[(indexPath?.row)!]
 
             if identifier == "tweetDetailsSegue" {
-                
-
                 let vc = destinationViewController as! TweetDetailsViewController
                 
                 vc.tweet = tweet
