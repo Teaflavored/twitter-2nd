@@ -21,6 +21,7 @@ class TweetDetailsViewController: UIViewController {
     @IBOutlet weak var numberRetweetsLabel: UILabel!
     @IBOutlet weak var numberFavoritesLabel: UILabel!
     var tweet: Tweet!
+    var lastTappedViewController: UINavigationController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +38,11 @@ class TweetDetailsViewController: UIViewController {
             if let profileImageUrl = user.profileUrl {
                 userProfileImageView.setImageWith(profileImageUrl)
             }
+            
+            userProfileImageView.isUserInteractionEnabled = true
+            
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+            userProfileImageView.addGestureRecognizer(tapGesture)
         }
 
         if let text = tweet.text {
@@ -91,6 +97,24 @@ class TweetDetailsViewController: UIViewController {
                 (error: Error) -> () in
         }
         )
+    }
+
+    @objc fileprivate func handleTap(_ sender: UITapGestureRecognizer) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let profileViewController = storyboard.instantiateViewController(withIdentifier: "TimelineNavigationController") as! UINavigationController
+        let pvc = profileViewController.viewControllers[0] as! TimelineViewController
+        pvc.targetUser = tweet.user!
+        pvc.isProfileView = true
+        pvc.title = "Profile"
+        lastTappedViewController = profileViewController
+        let newBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(self.handleDismissView(sender:)))
+        pvc.navigationItem.leftBarButtonItem = newBarButtonItem
+        
+        self.present(profileViewController, animated: true, completion: nil)
+    }
+
+    @objc fileprivate func handleDismissView(sender: UIBarButtonItem) {
+        lastTappedViewController.dismiss(animated: true, completion: nil)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

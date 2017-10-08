@@ -112,20 +112,20 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oZ8-BR-9hc">
                                             <rect key="frame" x="8" y="129" width="359" height="51"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number Tweets" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wo7-Iw-rYy">
-                                                    <rect key="frame" x="8" y="8" width="121" height="35"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number Tweets" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wo7-Iw-rYy">
+                                                    <rect key="frame" x="8" y="8" width="109" height="35"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number Following" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u1k-Mr-fct">
-                                                    <rect key="frame" x="137" y="8" width="139" height="35"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number Following" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u1k-Mr-fct">
+                                                    <rect key="frame" x="125" y="8" width="109" height="35"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Number Followers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ADg-xG-30j">
-                                                    <rect key="frame" x="284" y="8" width="67" height="35"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Number Followers" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ADg-xG-30j">
+                                                    <rect key="frame" x="242" y="8" width="109" height="35"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -135,10 +135,12 @@
                                             <constraints>
                                                 <constraint firstItem="Wo7-Iw-rYy" firstAttribute="top" secondItem="oZ8-BR-9hc" secondAttribute="top" constant="8" id="2ec-da-hxH"/>
                                                 <constraint firstItem="Wo7-Iw-rYy" firstAttribute="leading" secondItem="oZ8-BR-9hc" secondAttribute="leading" constant="8" id="36t-gu-9f0"/>
+                                                <constraint firstItem="u1k-Mr-fct" firstAttribute="width" secondItem="Wo7-Iw-rYy" secondAttribute="width" id="8aE-E1-hKz"/>
                                                 <constraint firstItem="u1k-Mr-fct" firstAttribute="top" secondItem="oZ8-BR-9hc" secondAttribute="top" constant="8" id="AhL-rm-heT"/>
                                                 <constraint firstAttribute="bottom" secondItem="u1k-Mr-fct" secondAttribute="bottom" constant="8" id="Cqp-Pg-hPa"/>
-                                                <constraint firstItem="u1k-Mr-fct" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Wo7-Iw-rYy" secondAttribute="trailing" constant="8" id="TUL-Kq-8vd"/>
-                                                <constraint firstItem="ADg-xG-30j" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="u1k-Mr-fct" secondAttribute="trailing" constant="8" id="cH6-mf-6yU"/>
+                                                <constraint firstItem="ADg-xG-30j" firstAttribute="width" secondItem="Wo7-Iw-rYy" secondAttribute="width" id="NMl-RG-c68"/>
+                                                <constraint firstItem="u1k-Mr-fct" firstAttribute="leading" secondItem="Wo7-Iw-rYy" secondAttribute="trailing" constant="8" id="TUL-Kq-8vd"/>
+                                                <constraint firstItem="ADg-xG-30j" firstAttribute="leading" secondItem="u1k-Mr-fct" secondAttribute="trailing" constant="8" id="cH6-mf-6yU"/>
                                                 <constraint firstAttribute="bottom" secondItem="ADg-xG-30j" secondAttribute="bottom" constant="8" id="eAP-bw-gju"/>
                                                 <constraint firstAttribute="trailing" secondItem="ADg-xG-30j" secondAttribute="trailing" constant="8" id="q42-Ig-33e"/>
                                                 <constraint firstItem="ADg-xG-30j" firstAttribute="top" secondItem="oZ8-BR-9hc" secondAttribute="top" constant="8" id="uaz-me-inn"/>
