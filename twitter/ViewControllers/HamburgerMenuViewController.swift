@@ -53,6 +53,13 @@ class HamburgerMenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if (menuViewController == nil) {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let menuViewController = storyboard.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
+            
+            menuViewController.hamburgerMenuViewController = self
+            self.menuViewController = menuViewController
+        }
         // Do any additional setup after loading the view.
     }
 

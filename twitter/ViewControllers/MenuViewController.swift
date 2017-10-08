@@ -20,7 +20,7 @@ UITableViewDelegate, UITableViewDataSource {
         super.viewDidLoad()
 
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let profileViewController = storyboard.instantiateViewController(withIdentifier: "ProfileViewController")
+        let profileViewController = storyboard.instantiateViewController(withIdentifier: "ProfileNavigationController")
         let timelineViewController = storyboard.instantiateViewController(withIdentifier: "TimelineNavigationController")
         
         menuViewControllers.append(profileViewController)
