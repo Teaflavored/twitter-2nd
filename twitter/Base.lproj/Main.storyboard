@@ -106,33 +106,26 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="RAB-ui-Bow">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="160"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="188"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kst-RJ-bjY">
-                                            <rect key="frame" x="147" y="8" width="80" height="80"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="80" id="6KZ-FL-r2y"/>
-                                                <constraint firstAttribute="width" constant="80" id="Bcs-gI-xIa"/>
-                                            </constraints>
-                                        </imageView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oZ8-BR-9hc">
-                                            <rect key="frame" x="8" y="96" width="359" height="56"/>
+                                            <rect key="frame" x="8" y="129" width="359" height="51"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number Tweets" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wo7-Iw-rYy">
-                                                    <rect key="frame" x="8" y="8" width="121" height="40"/>
+                                                    <rect key="frame" x="8" y="8" width="121" height="35"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number Following" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u1k-Mr-fct">
-                                                    <rect key="frame" x="137" y="8" width="139" height="40"/>
+                                                    <rect key="frame" x="137" y="8" width="139" height="35"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Number Followers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ADg-xG-30j">
-                                                    <rect key="frame" x="284" y="8" width="67" height="40"/>
+                                                    <rect key="frame" x="284" y="8" width="67" height="35"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -152,26 +145,45 @@
                                                 <constraint firstAttribute="bottom" secondItem="Wo7-Iw-rYy" secondAttribute="bottom" constant="8" id="xf7-rv-UTt"/>
                                             </constraints>
                                         </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Screenname" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BWS-J3-t8U">
+                                            <rect key="frame" x="119.5" y="8" width="137.5" height="25"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="25" id="3Wy-bg-GrP"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kst-RJ-bjY">
+                                            <rect key="frame" x="147" y="41" width="80" height="80"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="80" id="6KZ-FL-r2y"/>
+                                                <constraint firstAttribute="width" constant="80" id="Bcs-gI-xIa"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="BWS-J3-t8U" firstAttribute="centerX" secondItem="RAB-ui-Bow" secondAttribute="centerX" id="3e5-Pf-I80"/>
                                         <constraint firstAttribute="trailing" secondItem="oZ8-BR-9hc" secondAttribute="trailing" constant="8" id="3rl-Lm-V34"/>
                                         <constraint firstAttribute="bottom" secondItem="oZ8-BR-9hc" secondAttribute="bottom" constant="8" id="6dd-7X-0Fy"/>
                                         <constraint firstItem="oZ8-BR-9hc" firstAttribute="top" secondItem="kst-RJ-bjY" secondAttribute="bottom" constant="8" id="D7R-iK-ZE3"/>
                                         <constraint firstItem="oZ8-BR-9hc" firstAttribute="leading" secondItem="RAB-ui-Bow" secondAttribute="leading" constant="8" id="F4d-or-Ch7"/>
                                         <constraint firstItem="kst-RJ-bjY" firstAttribute="centerX" secondItem="RAB-ui-Bow" secondAttribute="centerX" id="JaL-Dw-G59"/>
-                                        <constraint firstItem="kst-RJ-bjY" firstAttribute="top" secondItem="RAB-ui-Bow" secondAttribute="top" constant="8" id="mGQ-x4-uSn"/>
+                                        <constraint firstItem="kst-RJ-bjY" firstAttribute="top" secondItem="BWS-J3-t8U" secondAttribute="bottom" constant="8" id="XZT-8I-26j"/>
+                                        <constraint firstItem="BWS-J3-t8U" firstAttribute="top" secondItem="RAB-ui-Bow" secondAttribute="top" constant="8" id="heo-5h-quq"/>
                                     </constraints>
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="tweetCell" rowHeight="112" id="So6-Ib-WYo" customClass="TweetCell" customModule="twitter" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="188" width="375" height="112"/>
+                                        <rect key="frame" x="0.0" y="216" width="375" height="112"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="So6-Ib-WYo" id="K09-VD-379">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="111.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JTi-Pf-jFM">
+                                                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JTi-Pf-jFM">
                                                     <rect key="frame" x="8" y="8" width="60" height="60"/>
+                                                    <gestureRecognizers/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="60" id="AOx-YJ-9Bd"/>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="UrQ-vj-XfC"/>
@@ -296,6 +308,7 @@
                         <outlet property="numFollowingLabel" destination="u1k-Mr-fct" id="xB4-XF-fs2"/>
                         <outlet property="numTweetsLabel" destination="Wo7-Iw-rYy" id="Naa-QM-Yk8"/>
                         <outlet property="profileView" destination="RAB-ui-Bow" id="RAX-eJ-R2W"/>
+                        <outlet property="screennameLabel" destination="BWS-J3-t8U" id="hjT-Ss-iIs"/>
                         <outlet property="tweetsTableView" destination="5IH-71-YWo" id="cG7-WC-JzE"/>
                         <outlet property="userImageView" destination="kst-RJ-bjY" id="7Xt-P4-xoO"/>
                     </connections>
@@ -697,6 +710,7 @@
             <objects>
                 <navigationController storyboardIdentifier="ProfileNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="rPw-UP-HSn" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="ZCU-md-Ukp"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="KAG-c0-kw4">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

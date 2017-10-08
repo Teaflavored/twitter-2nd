@@ -8,8 +8,9 @@
 
 import UIKit
 
-class TimelineViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class TimelineViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, TweetCellTapDelegate {
 
+    @IBOutlet weak var screennameLabel: UILabel!
     @IBOutlet weak var tweetsTableView: UITableView!
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var numTweetsLabel: UILabel!
@@ -21,6 +22,7 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
     var refreshControl: UIRefreshControl!
     var targetUser: User?
     var isProfileView: Bool = false
+    var lastTappedViewController: UINavigationController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +48,7 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
             numTweetsLabel.text = userToUse.numTweetsString
             numFollowerLabel.text = userToUse.numFollowersString
             numFollowingLabel.text = userToUse.numFollowingString
+            screennameLabel.text = userToUse.screename
         } else {
             tweetsTableView.tableHeaderView = nil
         }
@@ -90,6 +93,7 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
 
         let tweet = tweets[indexPath.row]
         cell.updateWithTweet(tweet)
+        cell.delegate = self
 
         return cell
     }
@@ -139,6 +143,20 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
 
+    func onTap(cell: TweetCell, tweetUser: User) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let profileViewController = storyboard.instantiateViewController(withIdentifier: "TimelineNavigationController") as! UINavigationController
+        let pvc = profileViewController.viewControllers[0] as! TimelineViewController
+        pvc.targetUser = tweetUser
+        pvc.isProfileView = true
+        pvc.title = "Profile"
+        lastTappedViewController = profileViewController
+        let newBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(self.handleDismissView(sender:)))
+        pvc.navigationItem.leftBarButtonItem = newBarButtonItem
+
+        self.present(profileViewController, animated: true, completion: nil)
+    }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destinationViewController = segue.destination
 
@@ -153,5 +171,9 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
                 vc.tweet = tweet
             }
         }
+    }
+    
+    @objc fileprivate func handleDismissView(sender: UIBarButtonItem) {
+        lastTappedViewController.dismiss(animated: true, completion: nil)
     }
 }
