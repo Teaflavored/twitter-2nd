@@ -1,20 +1,20 @@
-# Project 4 - *Name of App Here*
+# Project 4 - *Twitter*
 
-Time spent: **X** hours spent in total
+Time spent: **6** hours spent in total
 
 ## User Stories
 
 The following **required** functionality is completed:
 
-- [ ] Hamburger menu
-   - [ ] Dragging anywhere in the view should reveal the menu.
-   - [ ] The menu should include links to your profile, the home timeline, and the mentions view.
-   - [ ] The menu can look similar to the example or feel free to take liberty with the UI.
-- [ ] Profile page
-   - [ ] Contains the user header view
-   - [ ] Contains a section with the users basic stats: # tweets, # following, # followers
-- [ ] Home Timeline
-   - [ ] Tapping on a user image should bring up that user's profile page
+- [x] Hamburger menu
+   - [x] Dragging anywhere in the view should reveal the menu.
+   - [x] The menu should include links to your profile, the home timeline, and the mentions view.
+   - [x] The menu can look similar to the example or feel free to take liberty with the UI.
+- [x] Profile page
+   - [x] Contains the user header view
+   - [x] Contains a section with the users basic stats: # tweets, # following, # followers
+- [x] Home Timeline
+   - [x] Tapping on a user image should bring up that user's profile page
 
 The following **optional** features are implemented:
 
@@ -35,7 +35,7 @@ The following **additional** features are implemented:
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-  1.
+  1. navigating between navigation controllers
   2.
 
 
@@ -53,7 +53,7 @@ Describe any challenges encountered while building the app.
 
 ## License
 
-    Copyright [yyyy] [name of copyright owner]
+    Copyright [2017] [Auster Chen]
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
